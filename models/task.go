@@ -51,6 +51,22 @@ func (s *Store) Show() {
 
 }
 
+// update task
+
+// delete task
+func (s *Store) DeleteTask(id int) error {
+	for i, task := range s.tasks {
+		if task.ID == id {
+			s.tasks = append(s.tasks[:i], s.tasks[i+1:]...)
+			return nil
+
+		}
+
+	}
+	return fmt.Errorf("impossible de supprimer : le tache avec l'ID %d n'existe pas", id)
+
+}
+
 // STRUCT Tache
 //   → ID, Title, Desc, CreatedAt
 
