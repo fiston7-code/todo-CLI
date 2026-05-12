@@ -18,7 +18,7 @@ func main() {
 	fmt.Println("\nquel numero de tache voulais-vous supprimer ?")
 	fmt.Scanln(&taskToDelete)
 
-	errSupprimer := store.DeleteTask(1)
+	errSupprimer := store.DeleteTask(taskToDelete)
 
 	if errSupprimer != nil {
 		fmt.Printf("desole %v ne peut etre supprimer\n", errSupprimer)
