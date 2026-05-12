@@ -67,6 +67,25 @@ func (s *Store) DeleteTask(id int) error {
 
 }
 
+// MÉTHODE UpdateTask(id int, newTitle string, newDesc string) error
+//   → boucle sur les tasks avec index (for i := range)
+//   → SI tasks[i].ID == id
+//       → modifie tasks[i].Title et tasks[i].Desc
+//       → retourne nil
+//   → SI rien trouvé → retourne erreur
+
+func (s *Store) UpdateTask(id int, newTitle string, newDesc string) error {
+	for i := range s.tasks {
+		if s.tasks[i].ID == id {
+			s.tasks[i].Title = newTitle
+			s.tasks[i].Desc = newDesc
+			return nil
+
+		}
+	}
+	return fmt.Errorf("tâche avec l'ID %d introuvable", id)
+}
+
 // STRUCT Tache
 //   → ID, Title, Desc, CreatedAt
 
@@ -82,6 +101,13 @@ func (s *Store) DeleteTask(id int) error {
 //   → SINON boucle sur les tasks
 //   → Pour chaque task :
 //      fmt.Printf avec ID | Title | Desc | CreatedAt.Format(...)
+
+// MÉTHODE UpdateTask(id int, newTitle string, newDesc string) error
+//   → boucle sur les tasks avec index (for i := range)
+//   → SI tasks[i].ID == id
+//       → modifie tasks[i].Title et tasks[i].Desc
+//       → retourne nil
+//   → SI rien trouvé → retourne erreur
 // MÉTHODES
 //   → Create()
 //   → Show()
